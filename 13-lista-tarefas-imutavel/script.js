@@ -11,18 +11,35 @@ const tarefas = [
 function adicionarTarefa(lista, novaTarefa) {
   // TODO:
   // Retorne um NOVO array incluindo novaTarefa.
+  return [...lista, novaTarefa];
 }
 
 function concluirTarefa(lista, id) {
   // TODO:
   // Retorne um NOVO array.
   // Altere apenas a tarefa correspondente ao id.
+  return lista.map(tarefa => 
+    tarefa.id === id
+      ? { ...tarefa, concluida: true }
+      : tarefa
+  );
 }
 
 function removerTarefa(lista, id) {
   // TODO:
   // Retorne um NOVO array sem a tarefa informada.
+  return lista.filter(tarefa => tarefa.id !== id);
 }
 
 // TODO:
 // Teste as três funções sem alterar diretamente tarefas.
+
+const novaTarefa = {
+  id: 4,
+  titulo: "Fazer exercícios",
+  concluida: false
+};
+
+console.log(adicionarTarefa(tarefas, novaTarefa));
+console.log(concluirTarefa(tarefas, 2));
+console.log(removerTarefa(tarefas, 1));
